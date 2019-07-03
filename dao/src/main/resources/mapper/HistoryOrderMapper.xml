@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qp.dao.FavMapper">
-  <resultMap id="BaseResultMap" type="com.qp.pojo.Fav">
+<mapper namespace="com.qp.dao.HistoryOrderMapper">
+  <resultMap id="BaseResultMap" type="com.qp.pojo.HistoryOrder">
     <!--@mbg.generated-->
-    <id column="uid" jdbcType="VARCHAR" property="uid" />
-    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <id column="history_id" jdbcType="VARCHAR" property="historyId" />
+    <result column="buyer_id" jdbcType="VARCHAR" property="buyerId" />
+    <result column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="seller_id" jdbcType="VARCHAR" property="sellerId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--@mbg.generated-->
@@ -68,16 +70,16 @@
   </sql>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    `uid`, car_id
+    history_id, buyer_id, car_id, seller_id
   </sql>
-  <select id="selectByExample" parameterType="com.qp.pojo.FavExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qp.pojo.HistoryOrderExample" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from fav
+    from history_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,60 +87,86 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="map">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    delete from fav
-    where `uid` = #{uid,jdbcType=VARCHAR}
-      and car_id = #{carId,jdbcType=VARCHAR}
+    select 
+    <include refid="Base_Column_List" />
+    from history_order
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from history_order
+    where history_id = #{historyId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qp.pojo.FavExample">
+  <delete id="deleteByExample" parameterType="com.qp.pojo.HistoryOrderExample">
     <!--@mbg.generated-->
-    delete from fav
+    delete from history_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qp.pojo.Fav">
+  <insert id="insert" parameterType="com.qp.pojo.HistoryOrder">
     <!--@mbg.generated-->
-    insert into fav (`uid`, car_id)
-    values (#{uid,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR})
+    insert into history_order (history_id, buyer_id, car_id, 
+      seller_id)
+    values (#{historyId,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR}, 
+      #{sellerId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qp.pojo.Fav">
+  <insert id="insertSelective" parameterType="com.qp.pojo.HistoryOrder">
     <!--@mbg.generated-->
-    insert into fav
+    insert into history_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        `uid`,
+      <if test="historyId != null">
+        history_id,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
       </if>
       <if test="carId != null">
         car_id,
       </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        #{uid,jdbcType=VARCHAR},
+      <if test="historyId != null">
+        #{historyId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=VARCHAR},
       </if>
       <if test="carId != null">
         #{carId,jdbcType=VARCHAR},
       </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qp.pojo.FavExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qp.pojo.HistoryOrderExample" resultType="java.lang.Long">
     <!--@mbg.generated-->
-    select count(*) from fav
+    select count(*) from history_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!--@mbg.generated-->
-    update fav
+    update history_order
     <set>
-      <if test="record.uid != null">
-        `uid` = #{record.uid,jdbcType=VARCHAR},
+      <if test="record.historyId != null">
+        history_id = #{record.historyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerId != null">
+        buyer_id = #{record.buyerId,jdbcType=VARCHAR},
       </if>
       <if test="record.carId != null">
         car_id = #{record.carId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerId != null">
+        seller_id = #{record.sellerId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -147,58 +175,37 @@
   </update>
   <update id="updateByExample" parameterType="map">
     <!--@mbg.generated-->
-    update fav
-    set `uid` = #{record.uid,jdbcType=VARCHAR},
-      car_id = #{record.carId,jdbcType=VARCHAR}
+    update history_order
+    set history_id = #{record.historyId,jdbcType=VARCHAR},
+      buyer_id = #{record.buyerId,jdbcType=VARCHAR},
+      car_id = #{record.carId,jdbcType=VARCHAR},
+      seller_id = #{record.sellerId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.qp.pojo.FavKey">
-    <id column="uid" jdbcType="VARCHAR" property="uid" />
-    <id column="car_id" jdbcType="VARCHAR" property="carId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    car_id, `uid`
-  </sql>
-  <delete id="deleteByPrimaryKey" parameterType="com.qp.pojo.FavKey">
-    delete from fav
-    where `uid` = #{uid,jdbcType=VARCHAR}
-      and car_id = #{carId,jdbcType=VARCHAR}
-  </delete>
-  <select id="selectByUid" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from fav
-    where uid = #{uid,jdbcType=VARCHAR}
-  </select>
-  <select id="selectByCarId" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from fav
-    where car_id = #{carId,jdbcType=VARCHAR}
-  </select>
-  <insert id="insert" parameterType="com.qp.pojo.FavKey">
-    insert into fav (`uid`, car_id)
-    values (#{uid,jdbcType=VARCHAR}, #{carId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.qp.pojo.FavKey">
-    insert into fav
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        `uid`,
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.HistoryOrder">
+    <!--@mbg.generated-->
+    update history_order
+    <set>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
       </if>
       <if test="carId != null">
-        car_id,
+        car_id = #{carId,jdbcType=VARCHAR},
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        #{uid,jdbcType=VARCHAR},
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=VARCHAR},
       </if>
-      <if test="carId != null">
-        #{carId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+    </set>
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.HistoryOrder">
+    <!--@mbg.generated-->
+    update history_order
+    set buyer_id = #{buyerId,jdbcType=VARCHAR},
+      car_id = #{carId,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR}
+    where history_id = #{historyId,jdbcType=VARCHAR}
+  </update>
 </mapper>

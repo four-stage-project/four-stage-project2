@@ -1,20 +1,24 @@
 package com.qp.pojo;
 
-public class Pic extends PicKey {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class Pic implements Serializable {
+    /**
+     * 图片id
+     */
+    private String picId;
+
+    /**
+     * 汽车id
+     */
+    private String carId;
+
+    /**
+     * 图片链接
+     */
     private String picUrl;
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "Pic{" +
-                "picUrl='" + picUrl + '\'' +
-                '}';
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
+    private static final long serialVersionUID = 1L;
 }

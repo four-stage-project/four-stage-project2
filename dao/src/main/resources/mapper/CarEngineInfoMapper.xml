@@ -2,6 +2,308 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qp.dao.CarEngineInfoMapper">
   <resultMap id="BaseResultMap" type="com.qp.pojo.CarEngineInfo">
+    <!--@mbg.generated-->
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="displacement" jdbcType="DOUBLE" property="displacement" />
+    <result column="intake_form" jdbcType="VARCHAR" property="intakeForm" />
+    <result column="cylinder_arrangement" jdbcType="VARCHAR" property="cylinderArrangement" />
+    <result column="cylinders" jdbcType="VARCHAR" property="cylinders" />
+    <result column="maximum_horsepower" jdbcType="VARCHAR" property="maximumHorsepower" />
+    <result column="fuel" jdbcType="VARCHAR" property="fuel" />
+    <result column="fuel_label" jdbcType="VARCHAR" property="fuelLabel" />
+    <result column="oilsupply_mode" jdbcType="VARCHAR" property="oilsupplyMode" />
+    <result column="enviroment_standard" jdbcType="VARCHAR" property="enviromentStandard" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    car_id, displacement, intake_form, cylinder_arrangement, cylinders, maximum_horsepower, 
+    fuel, fuel_label, oilsupply_mode, enviroment_standard
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.CarEngineInfoExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car_engine_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from car_engine_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from car_engine_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.CarEngineInfoExample">
+    <!--@mbg.generated-->
+    delete from car_engine_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qp.pojo.CarEngineInfo">
+    <!--@mbg.generated-->
+    insert into car_engine_info (car_id, displacement, intake_form, 
+      cylinder_arrangement, cylinders, maximum_horsepower, 
+      fuel, fuel_label, oilsupply_mode, 
+      enviroment_standard)
+    values (#{carId,jdbcType=VARCHAR}, #{displacement,jdbcType=DOUBLE}, #{intakeForm,jdbcType=VARCHAR}, 
+      #{cylinderArrangement,jdbcType=VARCHAR}, #{cylinders,jdbcType=VARCHAR}, #{maximumHorsepower,jdbcType=VARCHAR}, 
+      #{fuel,jdbcType=VARCHAR}, #{fuelLabel,jdbcType=VARCHAR}, #{oilsupplyMode,jdbcType=VARCHAR}, 
+      #{enviromentStandard,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qp.pojo.CarEngineInfo">
+    <!--@mbg.generated-->
+    insert into car_engine_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="displacement != null">
+        displacement,
+      </if>
+      <if test="intakeForm != null">
+        intake_form,
+      </if>
+      <if test="cylinderArrangement != null">
+        cylinder_arrangement,
+      </if>
+      <if test="cylinders != null">
+        cylinders,
+      </if>
+      <if test="maximumHorsepower != null">
+        maximum_horsepower,
+      </if>
+      <if test="fuel != null">
+        fuel,
+      </if>
+      <if test="fuelLabel != null">
+        fuel_label,
+      </if>
+      <if test="oilsupplyMode != null">
+        oilsupply_mode,
+      </if>
+      <if test="enviromentStandard != null">
+        enviroment_standard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null">
+        #{displacement,jdbcType=DOUBLE},
+      </if>
+      <if test="intakeForm != null">
+        #{intakeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinderArrangement != null">
+        #{cylinderArrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinders != null">
+        #{cylinders,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumHorsepower != null">
+        #{maximumHorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelLabel != null">
+        #{fuelLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="oilsupplyMode != null">
+        #{oilsupplyMode,jdbcType=VARCHAR},
+      </if>
+      <if test="enviromentStandard != null">
+        #{enviromentStandard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.CarEngineInfoExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from car_engine_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update car_engine_info
+    <set>
+      <if test="record.carId != null">
+        car_id = #{record.carId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.displacement != null">
+        displacement = #{record.displacement,jdbcType=DOUBLE},
+      </if>
+      <if test="record.intakeForm != null">
+        intake_form = #{record.intakeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cylinderArrangement != null">
+        cylinder_arrangement = #{record.cylinderArrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cylinders != null">
+        cylinders = #{record.cylinders,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maximumHorsepower != null">
+        maximum_horsepower = #{record.maximumHorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuel != null">
+        fuel = #{record.fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuelLabel != null">
+        fuel_label = #{record.fuelLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oilsupplyMode != null">
+        oilsupply_mode = #{record.oilsupplyMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enviromentStandard != null">
+        enviroment_standard = #{record.enviromentStandard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update car_engine_info
+    set car_id = #{record.carId,jdbcType=VARCHAR},
+      displacement = #{record.displacement,jdbcType=DOUBLE},
+      intake_form = #{record.intakeForm,jdbcType=VARCHAR},
+      cylinder_arrangement = #{record.cylinderArrangement,jdbcType=VARCHAR},
+      cylinders = #{record.cylinders,jdbcType=VARCHAR},
+      maximum_horsepower = #{record.maximumHorsepower,jdbcType=VARCHAR},
+      fuel = #{record.fuel,jdbcType=VARCHAR},
+      fuel_label = #{record.fuelLabel,jdbcType=VARCHAR},
+      oilsupply_mode = #{record.oilsupplyMode,jdbcType=VARCHAR},
+      enviroment_standard = #{record.enviromentStandard,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.CarEngineInfo">
+    <!--@mbg.generated-->
+    update car_engine_info
+    <set>
+      <if test="displacement != null">
+        displacement = #{displacement,jdbcType=DOUBLE},
+      </if>
+      <if test="intakeForm != null">
+        intake_form = #{intakeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinderArrangement != null">
+        cylinder_arrangement = #{cylinderArrangement,jdbcType=VARCHAR},
+      </if>
+      <if test="cylinders != null">
+        cylinders = #{cylinders,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumHorsepower != null">
+        maximum_horsepower = #{maximumHorsepower,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null">
+        fuel = #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelLabel != null">
+        fuel_label = #{fuelLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="oilsupplyMode != null">
+        oilsupply_mode = #{oilsupplyMode,jdbcType=VARCHAR},
+      </if>
+      <if test="enviromentStandard != null">
+        enviroment_standard = #{enviromentStandard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.CarEngineInfo">
+    <!--@mbg.generated-->
+    update car_engine_info
+    set displacement = #{displacement,jdbcType=DOUBLE},
+      intake_form = #{intakeForm,jdbcType=VARCHAR},
+      cylinder_arrangement = #{cylinderArrangement,jdbcType=VARCHAR},
+      cylinders = #{cylinders,jdbcType=VARCHAR},
+      maximum_horsepower = #{maximumHorsepower,jdbcType=VARCHAR},
+      fuel = #{fuel,jdbcType=VARCHAR},
+      fuel_label = #{fuelLabel,jdbcType=VARCHAR},
+      oilsupply_mode = #{oilsupplyMode,jdbcType=VARCHAR},
+      enviroment_standard = #{enviromentStandard,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qp.pojo.CarEngineInfo">
     <id column="car_id" jdbcType="VARCHAR" property="carId" />
     <result column="displacement" jdbcType="DOUBLE" property="displacement" />
     <result column="intake_form" jdbcType="VARCHAR" property="intakeForm" />

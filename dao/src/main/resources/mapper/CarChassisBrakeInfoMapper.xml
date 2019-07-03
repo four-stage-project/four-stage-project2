@@ -2,6 +2,308 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qp.dao.CarChassisBrakeInfoMapper">
   <resultMap id="BaseResultMap" type="com.qp.pojo.CarChassisBrakeInfo">
+    <!--@mbg.generated-->
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="drive_mode" jdbcType="VARCHAR" property="driveMode" />
+    <result column="auto_power_type" jdbcType="VARCHAR" property="autoPowerType" />
+    <result column="front_suspension_type" jdbcType="VARCHAR" property="frontSuspensionType" />
+    <result column="rear_suspension_type" jdbcType="VARCHAR" property="rearSuspensionType" />
+    <result column="front_brake_type" jdbcType="VARCHAR" property="frontBrakeType" />
+    <result column="rear_brake_type" jdbcType="VARCHAR" property="rearBrakeType" />
+    <result column="parking_brake_type" jdbcType="VARCHAR" property="parkingBrakeType" />
+    <result column="front_wheel_size" jdbcType="VARCHAR" property="frontWheelSize" />
+    <result column="rear_wheel_size" jdbcType="VARCHAR" property="rearWheelSize" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    car_id, drive_mode, auto_power_type, front_suspension_type, rear_suspension_type, 
+    front_brake_type, rear_brake_type, parking_brake_type, front_wheel_size, rear_wheel_size
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.CarChassisBrakeInfoExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car_chassis_brake_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from car_chassis_brake_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from car_chassis_brake_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.CarChassisBrakeInfoExample">
+    <!--@mbg.generated-->
+    delete from car_chassis_brake_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qp.pojo.CarChassisBrakeInfo">
+    <!--@mbg.generated-->
+    insert into car_chassis_brake_info (car_id, drive_mode, auto_power_type, 
+      front_suspension_type, rear_suspension_type, 
+      front_brake_type, rear_brake_type, parking_brake_type, 
+      front_wheel_size, rear_wheel_size)
+    values (#{carId,jdbcType=VARCHAR}, #{driveMode,jdbcType=VARCHAR}, #{autoPowerType,jdbcType=VARCHAR}, 
+      #{frontSuspensionType,jdbcType=VARCHAR}, #{rearSuspensionType,jdbcType=VARCHAR}, 
+      #{frontBrakeType,jdbcType=VARCHAR}, #{rearBrakeType,jdbcType=VARCHAR}, #{parkingBrakeType,jdbcType=VARCHAR}, 
+      #{frontWheelSize,jdbcType=VARCHAR}, #{rearWheelSize,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qp.pojo.CarChassisBrakeInfo">
+    <!--@mbg.generated-->
+    insert into car_chassis_brake_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="driveMode != null">
+        drive_mode,
+      </if>
+      <if test="autoPowerType != null">
+        auto_power_type,
+      </if>
+      <if test="frontSuspensionType != null">
+        front_suspension_type,
+      </if>
+      <if test="rearSuspensionType != null">
+        rear_suspension_type,
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type,
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type,
+      </if>
+      <if test="parkingBrakeType != null">
+        parking_brake_type,
+      </if>
+      <if test="frontWheelSize != null">
+        front_wheel_size,
+      </if>
+      <if test="rearWheelSize != null">
+        rear_wheel_size,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="driveMode != null">
+        #{driveMode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoPowerType != null">
+        #{autoPowerType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontSuspensionType != null">
+        #{frontSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearSuspensionType != null">
+        #{rearSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontBrakeType != null">
+        #{frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearBrakeType != null">
+        #{rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingBrakeType != null">
+        #{parkingBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontWheelSize != null">
+        #{frontWheelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWheelSize != null">
+        #{rearWheelSize,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.CarChassisBrakeInfoExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from car_chassis_brake_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update car_chassis_brake_info
+    <set>
+      <if test="record.carId != null">
+        car_id = #{record.carId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driveMode != null">
+        drive_mode = #{record.driveMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoPowerType != null">
+        auto_power_type = #{record.autoPowerType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frontSuspensionType != null">
+        front_suspension_type = #{record.frontSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rearSuspensionType != null">
+        rear_suspension_type = #{record.rearSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frontBrakeType != null">
+        front_brake_type = #{record.frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rearBrakeType != null">
+        rear_brake_type = #{record.rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parkingBrakeType != null">
+        parking_brake_type = #{record.parkingBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frontWheelSize != null">
+        front_wheel_size = #{record.frontWheelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rearWheelSize != null">
+        rear_wheel_size = #{record.rearWheelSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update car_chassis_brake_info
+    set car_id = #{record.carId,jdbcType=VARCHAR},
+      drive_mode = #{record.driveMode,jdbcType=VARCHAR},
+      auto_power_type = #{record.autoPowerType,jdbcType=VARCHAR},
+      front_suspension_type = #{record.frontSuspensionType,jdbcType=VARCHAR},
+      rear_suspension_type = #{record.rearSuspensionType,jdbcType=VARCHAR},
+      front_brake_type = #{record.frontBrakeType,jdbcType=VARCHAR},
+      rear_brake_type = #{record.rearBrakeType,jdbcType=VARCHAR},
+      parking_brake_type = #{record.parkingBrakeType,jdbcType=VARCHAR},
+      front_wheel_size = #{record.frontWheelSize,jdbcType=VARCHAR},
+      rear_wheel_size = #{record.rearWheelSize,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.CarChassisBrakeInfo">
+    <!--@mbg.generated-->
+    update car_chassis_brake_info
+    <set>
+      <if test="driveMode != null">
+        drive_mode = #{driveMode,jdbcType=VARCHAR},
+      </if>
+      <if test="autoPowerType != null">
+        auto_power_type = #{autoPowerType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontSuspensionType != null">
+        front_suspension_type = #{frontSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearSuspensionType != null">
+        rear_suspension_type = #{rearSuspensionType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type = #{frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type = #{rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingBrakeType != null">
+        parking_brake_type = #{parkingBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="frontWheelSize != null">
+        front_wheel_size = #{frontWheelSize,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWheelSize != null">
+        rear_wheel_size = #{rearWheelSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.CarChassisBrakeInfo">
+    <!--@mbg.generated-->
+    update car_chassis_brake_info
+    set drive_mode = #{driveMode,jdbcType=VARCHAR},
+      auto_power_type = #{autoPowerType,jdbcType=VARCHAR},
+      front_suspension_type = #{frontSuspensionType,jdbcType=VARCHAR},
+      rear_suspension_type = #{rearSuspensionType,jdbcType=VARCHAR},
+      front_brake_type = #{frontBrakeType,jdbcType=VARCHAR},
+      rear_brake_type = #{rearBrakeType,jdbcType=VARCHAR},
+      parking_brake_type = #{parkingBrakeType,jdbcType=VARCHAR},
+      front_wheel_size = #{frontWheelSize,jdbcType=VARCHAR},
+      rear_wheel_size = #{rearWheelSize,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qp.pojo.CarChassisBrakeInfo">
     <id column="car_id" jdbcType="VARCHAR" property="carId" />
     <result column="drive_mode" jdbcType="VARCHAR" property="driveMode" />
     <result column="auto_power_type" jdbcType="VARCHAR" property="autoPowerType" />
@@ -150,4 +452,12 @@
       rear_wheel_size = #{rearWheelSize,jdbcType=VARCHAR}
     where car_id = #{carId,jdbcType=VARCHAR}
   </update>
+
+<!--auto generated by MybatisCodeHelper on 2019-07-03-->
+  <select id="selectAllByCarId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from car_chassis_brake_info
+        where car_id=#{carId,jdbcType=VARCHAR}
+    </select>
 </mapper>

@@ -2,6 +2,308 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qp.dao.CarExternalInfoMapper">
   <resultMap id="BaseResultMap" type="com.qp.pojo.CarExternalInfo">
+    <!--@mbg.generated-->
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="electronic_sunroof" jdbcType="VARCHAR" property="electronicSunroof" />
+    <result column="panoramic_sunroof" jdbcType="VARCHAR" property="panoramicSunroof" />
+    <result column="electronic_door_pull" jdbcType="VARCHAR" property="electronicDoorPull" />
+    <result column="electronic_trunk" jdbcType="VARCHAR" property="electronicTrunk" />
+    <result column="rain_sensing_wipers" jdbcType="VARCHAR" property="rainSensingWipers" />
+    <result column="rear_wiper" jdbcType="VARCHAR" property="rearWiper" />
+    <result column="power_window" jdbcType="VARCHAR" property="powerWindow" />
+    <result column="electronic_rearview_mirror" jdbcType="VARCHAR" property="electronicRearviewMirror" />
+    <result column="rearview_mirror_heating" jdbcType="VARCHAR" property="rearviewMirrorHeating" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    car_id, electronic_sunroof, panoramic_sunroof, electronic_door_pull, electronic_trunk, 
+    rain_sensing_wipers, rear_wiper, power_window, electronic_rearview_mirror, rearview_mirror_heating
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.CarExternalInfoExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car_external_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from car_external_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from car_external_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.CarExternalInfoExample">
+    <!--@mbg.generated-->
+    delete from car_external_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qp.pojo.CarExternalInfo">
+    <!--@mbg.generated-->
+    insert into car_external_info (car_id, electronic_sunroof, panoramic_sunroof, 
+      electronic_door_pull, electronic_trunk, rain_sensing_wipers, 
+      rear_wiper, power_window, electronic_rearview_mirror, 
+      rearview_mirror_heating)
+    values (#{carId,jdbcType=VARCHAR}, #{electronicSunroof,jdbcType=VARCHAR}, #{panoramicSunroof,jdbcType=VARCHAR}, 
+      #{electronicDoorPull,jdbcType=VARCHAR}, #{electronicTrunk,jdbcType=VARCHAR}, #{rainSensingWipers,jdbcType=VARCHAR}, 
+      #{rearWiper,jdbcType=VARCHAR}, #{powerWindow,jdbcType=VARCHAR}, #{electronicRearviewMirror,jdbcType=VARCHAR}, 
+      #{rearviewMirrorHeating,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qp.pojo.CarExternalInfo">
+    <!--@mbg.generated-->
+    insert into car_external_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="electronicSunroof != null">
+        electronic_sunroof,
+      </if>
+      <if test="panoramicSunroof != null">
+        panoramic_sunroof,
+      </if>
+      <if test="electronicDoorPull != null">
+        electronic_door_pull,
+      </if>
+      <if test="electronicTrunk != null">
+        electronic_trunk,
+      </if>
+      <if test="rainSensingWipers != null">
+        rain_sensing_wipers,
+      </if>
+      <if test="rearWiper != null">
+        rear_wiper,
+      </if>
+      <if test="powerWindow != null">
+        power_window,
+      </if>
+      <if test="electronicRearviewMirror != null">
+        electronic_rearview_mirror,
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        rearview_mirror_heating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicSunroof != null">
+        #{electronicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="panoramicSunroof != null">
+        #{panoramicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicDoorPull != null">
+        #{electronicDoorPull,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicTrunk != null">
+        #{electronicTrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="rainSensingWipers != null">
+        #{rainSensingWipers,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWiper != null">
+        #{rearWiper,jdbcType=VARCHAR},
+      </if>
+      <if test="powerWindow != null">
+        #{powerWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicRearviewMirror != null">
+        #{electronicRearviewMirror,jdbcType=VARCHAR},
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        #{rearviewMirrorHeating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.CarExternalInfoExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from car_external_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update car_external_info
+    <set>
+      <if test="record.carId != null">
+        car_id = #{record.carId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.electronicSunroof != null">
+        electronic_sunroof = #{record.electronicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="record.panoramicSunroof != null">
+        panoramic_sunroof = #{record.panoramicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="record.electronicDoorPull != null">
+        electronic_door_pull = #{record.electronicDoorPull,jdbcType=VARCHAR},
+      </if>
+      <if test="record.electronicTrunk != null">
+        electronic_trunk = #{record.electronicTrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rainSensingWipers != null">
+        rain_sensing_wipers = #{record.rainSensingWipers,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rearWiper != null">
+        rear_wiper = #{record.rearWiper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.powerWindow != null">
+        power_window = #{record.powerWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.electronicRearviewMirror != null">
+        electronic_rearview_mirror = #{record.electronicRearviewMirror,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rearviewMirrorHeating != null">
+        rearview_mirror_heating = #{record.rearviewMirrorHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update car_external_info
+    set car_id = #{record.carId,jdbcType=VARCHAR},
+      electronic_sunroof = #{record.electronicSunroof,jdbcType=VARCHAR},
+      panoramic_sunroof = #{record.panoramicSunroof,jdbcType=VARCHAR},
+      electronic_door_pull = #{record.electronicDoorPull,jdbcType=VARCHAR},
+      electronic_trunk = #{record.electronicTrunk,jdbcType=VARCHAR},
+      rain_sensing_wipers = #{record.rainSensingWipers,jdbcType=VARCHAR},
+      rear_wiper = #{record.rearWiper,jdbcType=VARCHAR},
+      power_window = #{record.powerWindow,jdbcType=VARCHAR},
+      electronic_rearview_mirror = #{record.electronicRearviewMirror,jdbcType=VARCHAR},
+      rearview_mirror_heating = #{record.rearviewMirrorHeating,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.CarExternalInfo">
+    <!--@mbg.generated-->
+    update car_external_info
+    <set>
+      <if test="electronicSunroof != null">
+        electronic_sunroof = #{electronicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="panoramicSunroof != null">
+        panoramic_sunroof = #{panoramicSunroof,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicDoorPull != null">
+        electronic_door_pull = #{electronicDoorPull,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicTrunk != null">
+        electronic_trunk = #{electronicTrunk,jdbcType=VARCHAR},
+      </if>
+      <if test="rainSensingWipers != null">
+        rain_sensing_wipers = #{rainSensingWipers,jdbcType=VARCHAR},
+      </if>
+      <if test="rearWiper != null">
+        rear_wiper = #{rearWiper,jdbcType=VARCHAR},
+      </if>
+      <if test="powerWindow != null">
+        power_window = #{powerWindow,jdbcType=VARCHAR},
+      </if>
+      <if test="electronicRearviewMirror != null">
+        electronic_rearview_mirror = #{electronicRearviewMirror,jdbcType=VARCHAR},
+      </if>
+      <if test="rearviewMirrorHeating != null">
+        rearview_mirror_heating = #{rearviewMirrorHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.CarExternalInfo">
+    <!--@mbg.generated-->
+    update car_external_info
+    set electronic_sunroof = #{electronicSunroof,jdbcType=VARCHAR},
+      panoramic_sunroof = #{panoramicSunroof,jdbcType=VARCHAR},
+      electronic_door_pull = #{electronicDoorPull,jdbcType=VARCHAR},
+      electronic_trunk = #{electronicTrunk,jdbcType=VARCHAR},
+      rain_sensing_wipers = #{rainSensingWipers,jdbcType=VARCHAR},
+      rear_wiper = #{rearWiper,jdbcType=VARCHAR},
+      power_window = #{powerWindow,jdbcType=VARCHAR},
+      electronic_rearview_mirror = #{electronicRearviewMirror,jdbcType=VARCHAR},
+      rearview_mirror_heating = #{rearviewMirrorHeating,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qp.pojo.CarExternalInfo">
     <id column="car_id" jdbcType="VARCHAR" property="carId" />
     <result column="electronic_sunroof" jdbcType="VARCHAR" property="electronicSunroof" />
     <result column="panoramic_sunroof" jdbcType="VARCHAR" property="panoramicSunroof" />

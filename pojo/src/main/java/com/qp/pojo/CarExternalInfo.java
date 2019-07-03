@@ -1,103 +1,56 @@
 package com.qp.pojo;
 
-public class CarExternalInfo {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class CarExternalInfo implements Serializable {
     private String carId;
 
+    /**
+     * 电动天窗
+     */
     private String electronicSunroof;
 
+    /**
+     * 全景天窗
+     */
     private String panoramicSunroof;
 
+    /**
+     * 电动吸合门
+     */
     private String electronicDoorPull;
 
+    /**
+     * 电动后备箱
+     */
     private String electronicTrunk;
 
+    /**
+     * 雨量感应雨刷
+     */
     private String rainSensingWipers;
 
+    /**
+     * 后雨刷
+     */
     private String rearWiper;
 
+    /**
+     * 前/后电动车窗
+     */
     private String powerWindow;
 
+    /**
+     * 电动后视镜
+     */
     private String electronicRearviewMirror;
 
+    /**
+     * 后视镜加热
+     */
     private String rearviewMirrorHeating;
 
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getElectronicSunroof() {
-        return electronicSunroof;
-    }
-
-    public void setElectronicSunroof(String electronicSunroof) {
-        this.electronicSunroof = electronicSunroof;
-    }
-
-    public String getPanoramicSunroof() {
-        return panoramicSunroof;
-    }
-
-    public void setPanoramicSunroof(String panoramicSunroof) {
-        this.panoramicSunroof = panoramicSunroof;
-    }
-
-    public String getElectronicDoorPull() {
-        return electronicDoorPull;
-    }
-
-    public void setElectronicDoorPull(String electronicDoorPull) {
-        this.electronicDoorPull = electronicDoorPull;
-    }
-
-    public String getElectronicTrunk() {
-        return electronicTrunk;
-    }
-
-    public void setElectronicTrunk(String electronicTrunk) {
-        this.electronicTrunk = electronicTrunk;
-    }
-
-    public String getRainSensingWipers() {
-        return rainSensingWipers;
-    }
-
-    public void setRainSensingWipers(String rainSensingWipers) {
-        this.rainSensingWipers = rainSensingWipers;
-    }
-
-    public String getRearWiper() {
-        return rearWiper;
-    }
-
-    public void setRearWiper(String rearWiper) {
-        this.rearWiper = rearWiper;
-    }
-
-    public String getPowerWindow() {
-        return powerWindow;
-    }
-
-    public void setPowerWindow(String powerWindow) {
-        this.powerWindow = powerWindow;
-    }
-
-    public String getElectronicRearviewMirror() {
-        return electronicRearviewMirror;
-    }
-
-    public void setElectronicRearviewMirror(String electronicRearviewMirror) {
-        this.electronicRearviewMirror = electronicRearviewMirror;
-    }
-
-    public String getRearviewMirrorHeating() {
-        return rearviewMirrorHeating;
-    }
-
-    public void setRearviewMirrorHeating(String rearviewMirrorHeating) {
-        this.rearviewMirrorHeating = rearviewMirrorHeating;
-    }
+    private static final long serialVersionUID = 1L;
 }

@@ -1,93 +1,54 @@
 package com.qp.pojo;
 
-public class CarSafetyInfo {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class CarSafetyInfo implements Serializable {
+    /**
+     * 汽车编号
+     */
     private String carId;
 
+    /**
+     * 主/副驾驶安全气囊
+     */
     private String frontAirbag;
 
+    /**
+     * 前/后排头部气囊
+     */
     private String headAirbag;
 
+    /**
+     * 儿童座椅接口
+     */
     private String childSeatInt;
 
+    /**
+     * 胎压检测
+     */
     private String tpms;
 
+    /**
+     * 车内中控锁
+     */
     private String carLock;
 
+    /**
+     * ABS防抱死系统
+     */
     private String abs;
 
+    /**
+     * 车身稳定控制
+     */
     private String usc;
 
+    /**
+     * 无钥匙启动
+     */
     private String pss;
 
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getFrontAirbag() {
-        return frontAirbag;
-    }
-
-    public void setFrontAirbag(String frontAirbag) {
-        this.frontAirbag = frontAirbag;
-    }
-
-    public String getHeadAirbag() {
-        return headAirbag;
-    }
-
-    public void setHeadAirbag(String headAirbag) {
-        this.headAirbag = headAirbag;
-    }
-
-    public String getChildSeatInt() {
-        return childSeatInt;
-    }
-
-    public void setChildSeatInt(String childSeatInt) {
-        this.childSeatInt = childSeatInt;
-    }
-
-    public String getTpms() {
-        return tpms;
-    }
-
-    public void setTpms(String tpms) {
-        this.tpms = tpms;
-    }
-
-    public String getCarLock() {
-        return carLock;
-    }
-
-    public void setCarLock(String carLock) {
-        this.carLock = carLock;
-    }
-
-    public String getAbs() {
-        return abs;
-    }
-
-    public void setAbs(String abs) {
-        this.abs = abs;
-    }
-
-    public String getUsc() {
-        return usc;
-    }
-
-    public void setUsc(String usc) {
-        this.usc = usc;
-    }
-
-    public String getPss() {
-        return pss;
-    }
-
-    public void setPss(String pss) {
-        this.pss = pss;
-    }
+    private static final long serialVersionUID = 1L;
 }

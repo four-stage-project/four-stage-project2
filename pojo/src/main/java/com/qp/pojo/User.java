@@ -1,144 +1,62 @@
 package com.qp.pojo;
 
-import java.beans.Transient;
-import java.util.Calendar;
+import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
-public class User {
+@Data
+public class User implements Serializable {
     private String uid;
 
+    /**
+     * 用户名  用户的唯一标识
+     */
     private String username;
 
+    /**
+     * 用户的登录密码
+     */
     private String upassword;
 
+    /**
+     * 用户的真实姓名
+     */
     private String uname;
 
+    /**
+     * 用户年龄，选填
+     */
     private Integer uage;
 
+    /**
+     * 用户性别，选填
+     */
     private String usex;
 
+    /**
+     * 用户电子邮箱，必填，验证
+     */
     private String uemail;
 
+    /**
+     * 用户联系方式，必填，与买家（卖家）交流的渠道
+     */
     private String uphone;
 
+    /**
+     * 注册（指填写完信息）的时间
+     */
     private Date uregistertime;
 
+    /**
+     * 激活状态
+     */
     private Byte ustatus;
 
+    /**
+     * 激活码
+     */
     private String uvalidatecode;
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUpassword() {
-        return upassword;
-    }
-
-    public void setUpassword(String upassword) {
-        this.upassword = upassword;
-    }
-
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "uid='" + uid + '\'' +
-                ", username='" + username + '\'' +
-                ", upassword='" + upassword + '\'' +
-                ", uname='" + uname + '\'' +
-                ", uage=" + uage +
-                ", usex='" + usex + '\'' +
-                ", uemail='" + uemail + '\'' +
-                ", uphone='" + uphone + '\'' +
-                ", uregistertime=" + uregistertime +
-                ", ustatus=" + ustatus +
-                ", uvalidatecode='" + uvalidatecode + '\'' +
-                '}';
-    }
-
-    public Integer getUage() {
-        return uage;
-    }
-
-    public void setUage(Integer uage) {
-        this.uage = uage;
-    }
-
-    public String getUsex() {
-        return usex;
-    }
-
-    public void setUsex(String usex) {
-        this.usex = usex;
-    }
-
-    public String getUemail() {
-        return uemail;
-    }
-
-    public void setUemail(String uemail) {
-        this.uemail = uemail;
-    }
-
-    public String getUphone() {
-        return uphone;
-    }
-
-    public void setUphone(String uphone) {
-        this.uphone = uphone;
-    }
-
-    public Date getUregistertime() {
-        return uregistertime;
-    }
-
-    public void setUregistertime(Date uregistertime) {
-        this.uregistertime = uregistertime;
-    }
-
-    public Byte getUstatus() {
-        return ustatus;
-    }
-
-    public void setUstatus(Byte ustatus) {
-        this.ustatus = ustatus;
-    }
-
-    public String getUvalidatecode() {
-        return uvalidatecode;
-    }
-
-    public void setUvalidatecode(String uvalidatecode) {
-        this.uvalidatecode = uvalidatecode;
-    }
-
-
-    @Transient //by
-    public Date getLastActivateTime() {
-        Calendar cl = Calendar.getInstance();
-        cl.setTime(uregistertime);
-        cl.add(Calendar.DATE , 2);
-
-        return cl.getTime();
-    }
+    private static final long serialVersionUID = 1L;
 }

@@ -2,6 +2,308 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qp.dao.CarInternalInfoMapper">
   <resultMap id="BaseResultMap" type="com.qp.pojo.CarInternalInfo">
+    <!--@mbg.generated-->
+    <id column="car_id" jdbcType="VARCHAR" property="carId" />
+    <result column="mf_steering_wheel" jdbcType="VARCHAR" property="mfSteeringWheel" />
+    <result column="dlcc" jdbcType="VARCHAR" property="dlcc" />
+    <result column="automatic_air_con" jdbcType="VARCHAR" property="automaticAirCon" />
+    <result column="manual_air_con" jdbcType="VARCHAR" property="manualAirCon" />
+    <result column="gps" jdbcType="VARCHAR" property="gps" />
+    <result column="parking_redar" jdbcType="VARCHAR" property="parkingRedar" />
+    <result column="reverse_video" jdbcType="VARCHAR" property="reverseVideo" />
+    <result column="leather_seat" jdbcType="VARCHAR" property="leatherSeat" />
+    <result column="seat_heating" jdbcType="VARCHAR" property="seatHeating" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    car_id, mf_steering_wheel, dlcc, automatic_air_con, manual_air_con, gps, parking_redar, 
+    reverse_video, leather_seat, seat_heating
+  </sql>
+  <select id="selectByExample" parameterType="com.qp.pojo.CarInternalInfoExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car_internal_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from car_internal_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from car_internal_info
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qp.pojo.CarInternalInfoExample">
+    <!--@mbg.generated-->
+    delete from car_internal_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qp.pojo.CarInternalInfo">
+    <!--@mbg.generated-->
+    insert into car_internal_info (car_id, mf_steering_wheel, dlcc, 
+      automatic_air_con, manual_air_con, gps, 
+      parking_redar, reverse_video, leather_seat, 
+      seat_heating)
+    values (#{carId,jdbcType=VARCHAR}, #{mfSteeringWheel,jdbcType=VARCHAR}, #{dlcc,jdbcType=VARCHAR}, 
+      #{automaticAirCon,jdbcType=VARCHAR}, #{manualAirCon,jdbcType=VARCHAR}, #{gps,jdbcType=VARCHAR}, 
+      #{parkingRedar,jdbcType=VARCHAR}, #{reverseVideo,jdbcType=VARCHAR}, #{leatherSeat,jdbcType=VARCHAR}, 
+      #{seatHeating,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qp.pojo.CarInternalInfo">
+    <!--@mbg.generated-->
+    insert into car_internal_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="mfSteeringWheel != null">
+        mf_steering_wheel,
+      </if>
+      <if test="dlcc != null">
+        dlcc,
+      </if>
+      <if test="automaticAirCon != null">
+        automatic_air_con,
+      </if>
+      <if test="manualAirCon != null">
+        manual_air_con,
+      </if>
+      <if test="gps != null">
+        gps,
+      </if>
+      <if test="parkingRedar != null">
+        parking_redar,
+      </if>
+      <if test="reverseVideo != null">
+        reverse_video,
+      </if>
+      <if test="leatherSeat != null">
+        leather_seat,
+      </if>
+      <if test="seatHeating != null">
+        seat_heating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carId != null">
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="mfSteeringWheel != null">
+        #{mfSteeringWheel,jdbcType=VARCHAR},
+      </if>
+      <if test="dlcc != null">
+        #{dlcc,jdbcType=VARCHAR},
+      </if>
+      <if test="automaticAirCon != null">
+        #{automaticAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="manualAirCon != null">
+        #{manualAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="gps != null">
+        #{gps,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingRedar != null">
+        #{parkingRedar,jdbcType=VARCHAR},
+      </if>
+      <if test="reverseVideo != null">
+        #{reverseVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="leatherSeat != null">
+        #{leatherSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="seatHeating != null">
+        #{seatHeating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qp.pojo.CarInternalInfoExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from car_internal_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update car_internal_info
+    <set>
+      <if test="record.carId != null">
+        car_id = #{record.carId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mfSteeringWheel != null">
+        mf_steering_wheel = #{record.mfSteeringWheel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dlcc != null">
+        dlcc = #{record.dlcc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.automaticAirCon != null">
+        automatic_air_con = #{record.automaticAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manualAirCon != null">
+        manual_air_con = #{record.manualAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gps != null">
+        gps = #{record.gps,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parkingRedar != null">
+        parking_redar = #{record.parkingRedar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reverseVideo != null">
+        reverse_video = #{record.reverseVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leatherSeat != null">
+        leather_seat = #{record.leatherSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatHeating != null">
+        seat_heating = #{record.seatHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update car_internal_info
+    set car_id = #{record.carId,jdbcType=VARCHAR},
+      mf_steering_wheel = #{record.mfSteeringWheel,jdbcType=VARCHAR},
+      dlcc = #{record.dlcc,jdbcType=VARCHAR},
+      automatic_air_con = #{record.automaticAirCon,jdbcType=VARCHAR},
+      manual_air_con = #{record.manualAirCon,jdbcType=VARCHAR},
+      gps = #{record.gps,jdbcType=VARCHAR},
+      parking_redar = #{record.parkingRedar,jdbcType=VARCHAR},
+      reverse_video = #{record.reverseVideo,jdbcType=VARCHAR},
+      leather_seat = #{record.leatherSeat,jdbcType=VARCHAR},
+      seat_heating = #{record.seatHeating,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qp.pojo.CarInternalInfo">
+    <!--@mbg.generated-->
+    update car_internal_info
+    <set>
+      <if test="mfSteeringWheel != null">
+        mf_steering_wheel = #{mfSteeringWheel,jdbcType=VARCHAR},
+      </if>
+      <if test="dlcc != null">
+        dlcc = #{dlcc,jdbcType=VARCHAR},
+      </if>
+      <if test="automaticAirCon != null">
+        automatic_air_con = #{automaticAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="manualAirCon != null">
+        manual_air_con = #{manualAirCon,jdbcType=VARCHAR},
+      </if>
+      <if test="gps != null">
+        gps = #{gps,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingRedar != null">
+        parking_redar = #{parkingRedar,jdbcType=VARCHAR},
+      </if>
+      <if test="reverseVideo != null">
+        reverse_video = #{reverseVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="leatherSeat != null">
+        leather_seat = #{leatherSeat,jdbcType=VARCHAR},
+      </if>
+      <if test="seatHeating != null">
+        seat_heating = #{seatHeating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qp.pojo.CarInternalInfo">
+    <!--@mbg.generated-->
+    update car_internal_info
+    set mf_steering_wheel = #{mfSteeringWheel,jdbcType=VARCHAR},
+      dlcc = #{dlcc,jdbcType=VARCHAR},
+      automatic_air_con = #{automaticAirCon,jdbcType=VARCHAR},
+      manual_air_con = #{manualAirCon,jdbcType=VARCHAR},
+      gps = #{gps,jdbcType=VARCHAR},
+      parking_redar = #{parkingRedar,jdbcType=VARCHAR},
+      reverse_video = #{reverseVideo,jdbcType=VARCHAR},
+      leather_seat = #{leatherSeat,jdbcType=VARCHAR},
+      seat_heating = #{seatHeating,jdbcType=VARCHAR}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qp.pojo.CarInternalInfo">
     <id column="car_id" jdbcType="VARCHAR" property="carId" />
     <result column="mf_steering_wheel" jdbcType="VARCHAR" property="mfSteeringWheel" />
     <result column="dlcc" jdbcType="VARCHAR" property="dlcc" />

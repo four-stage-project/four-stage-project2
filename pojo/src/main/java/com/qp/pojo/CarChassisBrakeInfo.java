@@ -1,119 +1,56 @@
 package com.qp.pojo;
 
-public class CarChassisBrakeInfo {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class CarChassisBrakeInfo implements Serializable {
     private String carId;
 
+    /**
+     * 驱动方式（选填）
+     */
     private String driveMode;
 
+    /**
+     * 助力类型
+     */
     private String autoPowerType;
 
+    /**
+     * 前悬挂类型
+     */
     private String frontSuspensionType;
 
+    /**
+     * 后悬挂类型
+     */
     private String rearSuspensionType;
 
+    /**
+     * 前制动类型
+     */
     private String frontBrakeType;
 
+    /**
+     * 后制动类型
+     */
     private String rearBrakeType;
 
+    /**
+     * 驻车制动类型（选填）
+     */
     private String parkingBrakeType;
 
+    /**
+     * 前轮胎规格
+     */
     private String frontWheelSize;
 
+    /**
+     * 后轮胎规格
+     */
     private String rearWheelSize;
 
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getDriveMode() {
-        return driveMode;
-    }
-
-    public void setDriveMode(String driveMode) {
-        this.driveMode = driveMode;
-    }
-
-    public String getAutoPowerType() {
-        return autoPowerType;
-    }
-
-    public void setAutoPowerType(String autoPowerType) {
-        this.autoPowerType = autoPowerType;
-    }
-
-    public String getFrontSuspensionType() {
-        return frontSuspensionType;
-    }
-
-    public void setFrontSuspensionType(String frontSuspensionType) {
-        this.frontSuspensionType = frontSuspensionType;
-    }
-
-    public String getRearSuspensionType() {
-        return rearSuspensionType;
-    }
-
-    public void setRearSuspensionType(String rearSuspensionType) {
-        this.rearSuspensionType = rearSuspensionType;
-    }
-
-    public String getFrontBrakeType() {
-        return frontBrakeType;
-    }
-
-    public void setFrontBrakeType(String frontBrakeType) {
-        this.frontBrakeType = frontBrakeType;
-    }
-
-    public String getRearBrakeType() {
-        return rearBrakeType;
-    }
-
-    public void setRearBrakeType(String rearBrakeType) {
-        this.rearBrakeType = rearBrakeType;
-    }
-
-    public String getParkingBrakeType() {
-        return parkingBrakeType;
-    }
-
-    public void setParkingBrakeType(String parkingBrakeType) {
-        this.parkingBrakeType = parkingBrakeType;
-    }
-
-    public String getFrontWheelSize() {
-        return frontWheelSize;
-    }
-
-    public void setFrontWheelSize(String frontWheelSize) {
-        this.frontWheelSize = frontWheelSize;
-    }
-
-    public String getRearWheelSize() {
-        return rearWheelSize;
-    }
-
-    @Override
-    public String toString() {
-        return "CarChassisBrakeInfo{" +
-                "carId='" + carId + '\'' +
-                ", driveMode='" + driveMode + '\'' +
-                ", autoPowerType='" + autoPowerType + '\'' +
-                ", frontSuspensionType='" + frontSuspensionType + '\'' +
-                ", rearSuspensionType='" + rearSuspensionType + '\'' +
-                ", frontBrakeType='" + frontBrakeType + '\'' +
-                ", rearBrakeType='" + rearBrakeType + '\'' +
-                ", parkingBrakeType='" + parkingBrakeType + '\'' +
-                ", frontWheelSize='" + frontWheelSize + '\'' +
-                ", rearWheelSize='" + rearWheelSize + '\'' +
-                '}';
-    }
-
-    public void setRearWheelSize(String rearWheelSize) {
-        this.rearWheelSize = rearWheelSize;
-    }
+    private static final long serialVersionUID = 1L;
 }

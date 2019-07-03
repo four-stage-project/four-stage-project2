@@ -1,103 +1,56 @@
 package com.qp.pojo;
 
-public class CarInternalInfo {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class CarInternalInfo implements Serializable {
     private String carId;
 
+    /**
+     * 多功能方向盘
+     */
     private String mfSteeringWheel;
 
+    /**
+     * 定速巡航
+     */
     private String dlcc;
 
+    /**
+     * 自动空调
+     */
     private String automaticAirCon;
 
+    /**
+     * 手动空调
+     */
     private String manualAirCon;
 
+    /**
+     * GPS导航
+     */
     private String gps;
 
+    /**
+     * 倒车雷达
+     */
     private String parkingRedar;
 
+    /**
+     * 倒车影像
+     */
     private String reverseVideo;
 
+    /**
+     * 真皮座椅
+     */
     private String leatherSeat;
 
+    /**
+     * 前后排座椅加热
+     */
     private String seatHeating;
 
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getMfSteeringWheel() {
-        return mfSteeringWheel;
-    }
-
-    public void setMfSteeringWheel(String mfSteeringWheel) {
-        this.mfSteeringWheel = mfSteeringWheel;
-    }
-
-    public String getDlcc() {
-        return dlcc;
-    }
-
-    public void setDlcc(String dlcc) {
-        this.dlcc = dlcc;
-    }
-
-    public String getAutomaticAirCon() {
-        return automaticAirCon;
-    }
-
-    public void setAutomaticAirCon(String automaticAirCon) {
-        this.automaticAirCon = automaticAirCon;
-    }
-
-    public String getManualAirCon() {
-        return manualAirCon;
-    }
-
-    public void setManualAirCon(String manualAirCon) {
-        this.manualAirCon = manualAirCon;
-    }
-
-    public String getGps() {
-        return gps;
-    }
-
-    public void setGps(String gps) {
-        this.gps = gps;
-    }
-
-    public String getParkingRedar() {
-        return parkingRedar;
-    }
-
-    public void setParkingRedar(String parkingRedar) {
-        this.parkingRedar = parkingRedar;
-    }
-
-    public String getReverseVideo() {
-        return reverseVideo;
-    }
-
-    public void setReverseVideo(String reverseVideo) {
-        this.reverseVideo = reverseVideo;
-    }
-
-    public String getLeatherSeat() {
-        return leatherSeat;
-    }
-
-    public void setLeatherSeat(String leatherSeat) {
-        this.leatherSeat = leatherSeat;
-    }
-
-    public String getSeatHeating() {
-        return seatHeating;
-    }
-
-    public void setSeatHeating(String seatHeating) {
-        this.seatHeating = seatHeating;
-    }
+    private static final long serialVersionUID = 1L;
 }

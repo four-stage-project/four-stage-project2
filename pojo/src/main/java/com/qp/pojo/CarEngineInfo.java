@@ -1,119 +1,56 @@
 package com.qp.pojo;
 
-public class CarEngineInfo {
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+public class CarEngineInfo implements Serializable {
     private String carId;
 
+    /**
+     * 排量（ml） 不为空
+     */
     private Double displacement;
 
+    /**
+     * 进气形式（不为空）
+     */
     private String intakeForm;
 
-    @Override
-    public String toString() {
-        return "CarEngineInfo{" +
-                "carId='" + carId + '\'' +
-                ", displacement=" + displacement +
-                ", intakeForm='" + intakeForm + '\'' +
-                ", cylinderArrangement='" + cylinderArrangement + '\'' +
-                ", cylinders='" + cylinders + '\'' +
-                ", maximumHorsepower='" + maximumHorsepower + '\'' +
-                ", fuel='" + fuel + '\'' +
-                ", fuelLabel='" + fuelLabel + '\'' +
-                ", oilsupplyMode='" + oilsupplyMode + '\'' +
-                ", enviromentStandard='" + enviromentStandard + '\'' +
-                '}';
-    }
-
+    /**
+     * 汽缸排列方式（不为空）
+     */
     private String cylinderArrangement;
 
+    /**
+     * 汽缸数（不为空）
+     */
     private String cylinders;
 
+    /**
+     * 最大马力
+     */
     private String maximumHorsepower;
 
+    /**
+     * 燃料类型（不为空）
+     */
     private String fuel;
 
+    /**
+     * 燃油标号（不为空）
+     */
     private String fuelLabel;
 
+    /**
+     * 供油方式
+     */
     private String oilsupplyMode;
 
+    /**
+     * 排放标准（不为空）
+     */
     private String enviromentStandard;
 
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public Double getDisplacement() {
-        return displacement;
-    }
-
-    public void setDisplacement(Double displacement) {
-        this.displacement = displacement;
-    }
-
-    public String getIntakeForm() {
-        return intakeForm;
-    }
-
-    public void setIntakeForm(String intakeForm) {
-        this.intakeForm = intakeForm;
-    }
-
-    public String getCylinderArrangement() {
-        return cylinderArrangement;
-    }
-
-    public void setCylinderArrangement(String cylinderArrangement) {
-        this.cylinderArrangement = cylinderArrangement;
-    }
-
-    public String getCylinders() {
-        return cylinders;
-    }
-
-    public void setCylinders(String cylinders) {
-        this.cylinders = cylinders;
-    }
-
-    public String getMaximumHorsepower() {
-        return maximumHorsepower;
-    }
-
-    public void setMaximumHorsepower(String maximumHorsepower) {
-        this.maximumHorsepower = maximumHorsepower;
-    }
-
-    public String getFuel() {
-        return fuel;
-    }
-
-    public void setFuel(String fuel) {
-        this.fuel = fuel;
-    }
-
-    public String getFuelLabel() {
-        return fuelLabel;
-    }
-
-    public void setFuelLabel(String fuelLabel) {
-        this.fuelLabel = fuelLabel;
-    }
-
-    public String getOilsupplyMode() {
-        return oilsupplyMode;
-    }
-
-    public void setOilsupplyMode(String oilsupplyMode) {
-        this.oilsupplyMode = oilsupplyMode;
-    }
-
-    public String getEnviromentStandard() {
-        return enviromentStandard;
-    }
-
-    public void setEnviromentStandard(String enviromentStandard) {
-        this.enviromentStandard = enviromentStandard;
-    }
+    private static final long serialVersionUID = 1L;
 }
