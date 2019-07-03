@@ -1,10 +1,10 @@
 package com.qp.pojo.vo;
 
-import com.qp.pojo.Order;
+import com.qp.pojo.CarOrder;
 
 public class PhoneOrderVo {
     private String phone;
-    private Order order;
+    private CarOrder carOrder;
 
     public String getPhone() {
         return phone;
@@ -14,7 +14,7 @@ public class PhoneOrderVo {
     public String toString() {
         return "PhoneOrderVo{" +
                 "phone='" + phone + '\'' +
-                ", order=" + order +
+                ", order=" + carOrder +
                 '}';
     }
 
@@ -22,11 +22,11 @@ public class PhoneOrderVo {
         this.phone = phone;
     }
 
-    public Order getOrder() {
-        return order;
+    public CarOrder getOrder() {
+        return carOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(CarOrder order) {
+        this.carOrder = order;
     }
 }

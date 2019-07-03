@@ -28,6 +28,4 @@ public interface CarChassisBrakeInfoMapper {
     int updateByPrimaryKeySelective(CarChassisBrakeInfo record);
 
     int updateByPrimaryKey(CarChassisBrakeInfo record);
-
-    List<CarChassisBrakeInfo> selectAllByCarId(@Param("carId") String carId);
 }

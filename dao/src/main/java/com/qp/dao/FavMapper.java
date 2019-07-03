@@ -3,7 +3,7 @@ package com.qp.dao;
 import com.qp.pojo.Fav;
 import com.qp.pojo.FavExample;
 import java.util.List;
-import com.qp.pojo.FavKey;import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Param;
 
 public interface FavMapper {
     long countByExample(FavExample example);
@@ -21,10 +21,4 @@ public interface FavMapper {
     int updateByExampleSelective(@Param("record") Fav record, @Param("example") FavExample example);
 
     int updateByExample(@Param("record") Fav record, @Param("example") FavExample example);
-
-    int deleteByPrimaryKey(FavKey key);
-
-    List<FavKey> selectByUid(String uid);
-
-    List<FavKey> selectByCarId(String carId);
 }

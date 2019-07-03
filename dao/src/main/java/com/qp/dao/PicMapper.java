@@ -3,7 +3,7 @@ package com.qp.dao;
 import com.qp.pojo.Pic;
 import com.qp.pojo.PicExample;
 import java.util.List;
-import com.qp.pojo.PicKey;import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Param;
 
 public interface PicMapper {
     long countByExample(PicExample example);
@@ -27,8 +27,4 @@ public interface PicMapper {
     int updateByPrimaryKeySelective(Pic record);
 
     int updateByPrimaryKey(Pic record);
-
-    int deleteByPrimaryKey(PicKey key);
-
-    Pic selectByPrimaryKey(PicKey key);
 }
